@@ -1,0 +1,22 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myrabbitconsumer
+spec:
+  selector:
+    matchLabels:
+      app: myrabbitconsumer
+  template:
+    metadata:
+      labels:
+        app: myrabbitconsumer
+    spec:
+      containers:
+      - name: myrabbitconsumer
+        image: txcai/myrabbitconsumer:3.0.0
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_PORT
+          value: "5672"
+
